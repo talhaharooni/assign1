@@ -104,3 +104,130 @@ We won't get into how to sync in this assignment, but see [these instructions](h
 It's good practice to establish the `upstream` immediately, even if you aren't going to use it immediately, and I want you to get in the habit of doing this.
 
 ### Step 4: Create a New Local Branch ###
+
+In this step, we'll introduce _branches_, which are an essential `git` feature.
+Branches essentially allow you to split into a sort of parallel universe with respect to your code.
+In one universe (the original universe), your code is completely unchanged.
+In another universe (the branched universe), you make changes to your code.
+From a you-centric standpoint, this allows you to easily switch back and forth between the original and modified code.
+You can add features, make changes, fix bugs, etc., all without worried about breaking functionality that's already there.
+After all, if a branch goes completely off the rails and everything breaks, you can always switch back to the original branch, as if nothing changed.
+
+From a we-centric standpoint, branches allow us to selectively isolate ourselves from each other.
+Instead of everyone modifying the same code (involving lots of us stepping on each other's toes), we modify _branches_.
+Ideally, only one or few developers are working on a branch at a time, minimizing the amount of work caused by someone changing something out from under you.
+With this in mind, it's good practice to **always** make changes on a branch, as opposed to the original code.
+Eventually, you're changes will need to be incorporated into the original code; we'll get to that in a bit.
+
+First, let's see what branches you have already.
+Type the following command:
+
+```console
+git branch
+```
+
+You should see the following:
+
+```
+* master
+```
+
+The `*` states that you're currently on a branch named `master`, and the lack of other output means that `master` is the only branch available.
+By convention, `master` is usually available on all GitHub repositories, and it's considered to be where the most stable version of your software exists.
+The `master` branch should _always_ compile, and it should be relatively bug-free.
+
+Let's make a new branch, using the following command:
+
+```console
+git checkout -b updated
+```
+
+This creates a new branch named `updated`, which splits off from the `master` branch.
+If you run `git branch` again, you should see the following:
+
+```
+  master
+* updated
+```
+
+Now there are two branches (`master` and `updated`), and the `*` denotes that you're on the `updated` branch.
+
+### Step 5: Improve this Text ###
+
+Make an edit to this file (`README.md`), which is in [Markdown](https://en.wikipedia.org/wiki/Markdown) (specifically [GitHub-flavored Markdown](https://github.github.com/gfm/)) format.
+Your edit should somehow improve the content.
+This can mean adding further descriptions, adding demonstrative pictures, etc.
+
+### Step 6: Commit Your Changes ###
+
+`git` knows what the state of the branch was before you started making edits, and will show you the changes made since your last _commit_.
+A commit is an explicit point where you effectively say "save this content".
+Commits represent the content of all files at distinct points in time.
+Being tanglible things, `git` allows us to do things like view code as it was at a particular commit, undo the changes made at a commit, and so on.
+
+First, let's see what has changed.
+You can do this with the following command:
+
+```console
+git status
+```
+
+This will give you output something like the following:
+
+```
+On branch updated
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	temp.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+The above output states that `README.md` has changed since your last commit, and that the file `temp.txt` has been added.
+You must explicitly tell `git` which files to _stage_ for a commit, where a staged file becomes part of the commit.
+You can stage files with `git add`, like so:
+
+```console
+git add README.md temp.txt
+```
+
+The above command states that changes to `README.md` are part of this commit, and that `temp.txt` is similarly part of this commit.
+
+You can use `git status` again to see the effect of this staging.
+For this particular example, we see the following:
+
+```
+On branch updated
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   README.md
+	new file:   temp.txt
+```
+
+The above output summarizes the changes this commit is introducing relative to the last commit, namely that `README.md` is modified, and that we've added `temp.txt`.
+
+Once everything you want is staged, you can commit your changes like so:
+
+```console
+git commit
+```
+
+This will bring up an editor (honoring the `$EDITOR` environment variable), allowing you to write a descriptive message (the _commit message_) for your commit.
+Once you save your message, your commit will be done.
+You can verify that your commit did something like so:
+
+```console
+git log
+```
+
+The above command will list all the commits that have happened to your code, underneath the branch you're on.
+The first commit listed will be the one you just made, and will include your commit message.
+
