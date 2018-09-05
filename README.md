@@ -231,3 +231,55 @@ git log
 The above command will list all the commits that have happened to your code, underneath the branch you're on.
 The first commit listed will be the one you just made, and will include your commit message.
 
+### Step 7: Push your Branch and Your Changes ###
+
+While you have made changes and they are safely in your branch, this branch exists only on your machine.
+You need to explicitly upload this branch to the server.
+This can be done with the following command:
+
+```console
+git push -u origin updated
+```
+
+This command states to _push_ (upload) your `updated` branch to the `origin` remote.
+This will make the `updated` branch available to anyone else working on your repository.
+Additionally, if your machine were to fail, your `updated` branch would still be safe and sound online.
+
+Incidentally, if you make further commits to your branch, you need to explicitly upload them with this command.
+On subsequent runs, `git` will default to using the `origin` remote for the `updated` branch, so you'd only need to run:
+
+```console
+git push
+```
+
+### Step 8: Submit a Pull Request ###
+
+Almost everything discussed so far has been about selective isolation of your code from the rest of the codebase.
+Ultimately, your changes need to end up back in the original codebase.
+Oftentimes, you won't have write access to the codebase.
+However, GitHub makes it easy to communicate your proposed modifications to those who _do_ have write access to the codebase.
+
+You can communicate these changes via a _pull request_, wherein you request that the original authors _pull_ your code into their codebase.
+This allows authors to carefully control what ends up into the codebase, and what doesn't.
+Usually, this isn't a simple yes/no, but rather the start of a discussion.
+Authors may suggest edits, or make edits themselves, via additional commits on top of what you've submitted.
+
+Throughout this process, GitHub will correctly show you as the author of your original commits; you don't lose ownership during this process.
+Similarly, if the authors accept your changes (with potential modifications), GitHub will still show you as the author of your work, and will list you as a contributor to a project.
+For example, I am listed as a contributor to [`hyper`](https://github.com/hyperium/hyper), even though I don't have write access to the repository.
+
+To start a pull request submission, first click the `New pull request` button on your main repository webpage, circled below:
+![starting a pull request](readme_files/pull_request_1.png)
+
+After clicking this button, you'll see an interface where you can specify exactly what code you want to be pulled in, and where you'd like it pulled in.
+In this case, we want to pull into the `master` branch of the original repository, from your own `updated` branch.
+You can click the drop-down boxes to make this happen.
+After you make all your selections, you should see something like the following:
+![pull request settings](readme_files/pull_request_2.png)
+
+From here, click the green `Create pull request` button.
+This will open a page where you can name your pull request, and give it a description.
+Your name and description should concisely describe the changes you've made.
+
+Once you write the name and description, click the green `Create pull request` button again, which will submit the pull request.
+In the next assignment, we'll work with these submitted pull requests for code reviewing purposes.
