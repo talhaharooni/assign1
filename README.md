@@ -283,3 +283,9 @@ Your name and description should concisely describe the changes you've made.
 
 Once you write the name and description, click the green `Create pull request` button again, which will submit the pull request.
 In the next assignment, we'll work with these submitted pull requests for code reviewing purposes.
+
+## Retrospective ##
+
+In this assignment, you've gone over some basics of using `git` and GitHub.
+You've forked and cloned repositories, made branches, committed code, and submitted a pull request.
+While this barely scratches the surface of what you can do with `git`, this describes ~80-90% of commonly-used functionality.
