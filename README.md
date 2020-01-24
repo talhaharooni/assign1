@@ -21,7 +21,7 @@ If you already have an account, you can use your existing account.
 
 ### Step 1: Fork this Repository ###
 
-Go to the [main repository webpage](https://github.com/CSUN-COMP587-F18/assign1) for this repository.
+Go to the [main repository webpage](https://github.com/csun-comp587-s20/assign1) for this repository.
 [Fork](https://guides.github.com/activities/forking/) this repository over to **your own account**, using the button circled below:
 ![fork_image](readme_files/fork.png)
 
