@@ -289,3 +289,4 @@ In the next assignment, we'll work with these submitted pull requests for code r
 In this assignment, you've gone over some basics of using `git` and GitHub.
 You've forked and cloned repositories, made branches, committed code, and submitted a pull request.
 While this barely scratches the surface of what you can do with `git`, this describes ~80-90% of commonly-used functionality.
+*beter 
